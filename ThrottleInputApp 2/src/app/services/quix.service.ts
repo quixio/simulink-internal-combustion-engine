@@ -65,7 +65,7 @@ export class QuixService {
       let bearerToken$ = this.httpClient.get(this.server + 'bearer_token', { headers, responseType: 'text' });
       let workspaceId$ = this.httpClient.get(this.server + 'workspace_id', { headers, responseType: 'text' });
       let portalApi$ = this.httpClient.get(this.server + 'portal_api', { headers, responseType: 'text' })
-      let topic$ = this.httpClient.get(this.server + '', { headers, responseType: 'text' });
+      let topic$ = this.httpClient.get(this.server + 'topic', { headers, responseType: 'text' });
 
       combineLatest([
         // General
@@ -73,7 +73,6 @@ export class QuixService {
         workspaceId$,
         portalApi$,
         topic$
-
       ]).subscribe(([bearerToken, workspaceId, portalApi, topic]) => {
         this.token = this.stripLineFeed(bearerToken);
         this.workspaceId = this.stripLineFeed(workspaceId);

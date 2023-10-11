@@ -1,54 +1,27 @@
-# Event Detection Demo UI
+# ThrottleInputApp
 
-[This project](https://github.com/quixio/quix-samples/tree/main/nodejs/advanced/event-detection-ui) 
-is the UI for our event detection demo. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
-Stream data from your phone or a data generator and view the telemetry in this UI in real-time. Deploy an event detection service and you can also see the events time and location.
+## Development server
 
-## How to run
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Create a [Quix](https://portal.platform.quix.ai/self-sign-up?xlink=github) account or log-in and visit the Samples to use this project.
+## Code scaffolding
 
-Clicking `Deploy` on the Sample, deploys a pre-built container in Quix. Complete the environment variables to configure the container.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Clicking `Edit code` on the Sample, forks the project to your own Git repo so you can customize it before deploying.
+## Build
 
-## Local development
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-To run this project locally update the following values in `environment-variables.service.ts`:
+## Running unit tests
 
-``` 
-  private workingLocally = false; // set to true if working locally
-  public token: string = ''; // Create a token in the Tokens menu and paste it here
-  public topic: string = ''; // Create a topic in the Topic tab - for this demo use `demo-data`
-  public eventTopic: string = ''; // Create a topic in the Topic tab - for this demo use `events`
-  public workspaceId: string = ''; // Look in the URL for the Quix Portal your workspace ID is after `workspace=`
-```
-  
-The Token can be obtained from the Quix portal under the `Token` menu (top right of the page under your user avatar)
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Then install dependencies:
+## Running end-to-end tests
 
-```
-Run `npm install --force` to install all the dependencies
-```
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-And finally, run the solution:
+## Further help
 
-```
-Run `ng serve` to build and run the . Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-```
-
-## Docs
-
-This UI makes use of the Streaming Reader API. Check out the [API docs](https://docs.quix.io/apis/streaming-reader-api/intro/) for detailed API usage guidance and how to connect to the WebSockets API using SignalR.
-
-## Contribute
-
-Submit forked projects to the Quix [GitHub](https://github.com/quixio/quix-samples) repo. Any new project that we accept will be attributed to you and you'll receive $200 in Quix credit.
-
-## Open source
-
-This project is open source under the Apache 2.0 license and available in our [GitHub](https://github.com/quixio/quix-samples) repo.
-
-Please star us and mention us on social to show your appreciation.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

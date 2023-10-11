@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from "./app.component";
-
+import { RouterModule, Routes } from '@angular/router';
+import { QrComponent } from './pages/qr/qr.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/tracer', pathMatch: 'full'},
-  {path: 'tracker', component: AppComponent},
+  { path: '', component: HomeComponent },
+  { path: 'qr', component: QrComponent },
 ];
 
 @NgModule({

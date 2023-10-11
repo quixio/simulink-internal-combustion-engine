@@ -1,36 +1,26 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AgmCoreModule} from "@agm/core";
-import {CommonModule} from "@angular/common";
-import {BrowserModule} from "@angular/platform-browser";
-import {HttpClientModule} from "@angular/common/http";
+import { QrComponent } from './pages/qr/qr.component';
+import { HomeComponent } from './pages/home/home.component';
 import { MaterialModule } from './material.module';
-import { NgChartsModule } from 'ng2-charts';
-import { AlertComponent } from './components/alert/alert.component';
-import { AlertsDialogComponent } from './components/alerts-dialog/alerts-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
-    AlertsDialogComponent
+    QrComponent,
+    HomeComponent
   ],
   imports: [
-    CommonModule,
-    HttpClientModule,
     BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey: ''
-    }),
+    AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    NgChartsModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

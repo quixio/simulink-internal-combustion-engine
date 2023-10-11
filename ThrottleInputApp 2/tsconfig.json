@@ -4,13 +4,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -22,10 +22,6 @@
     "lib": [
       "es2020",
       "dom"
-    ],
-    "typeRoots": [
-      "./src/types",
-      "node_modules/@angular/material"
     ]
   },
   "angularCompilerOptions": {

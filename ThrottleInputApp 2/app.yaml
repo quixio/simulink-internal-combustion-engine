@@ -1,15 +1,4 @@
 name: ThrottleInputApp 2
 language: nodejs
-variables:
-  - name: topic
-    inputType: FreeText
-    description: The topic to read telementry data from
-    defaultValue: phone-data
-    required: true
-  - name: eventTopic
-    inputType: FreeText
-    description: The topic to read events from
-    defaultValue: events
-    required: true
 dockerfile: src/build/dockerfile
-defaultFile: src/app/services/environment-variables.service.ts
+defaultFile: src/app/services/quix.service.ts

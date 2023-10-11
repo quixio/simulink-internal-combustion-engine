@@ -1,10 +1,14 @@
-<div class="p-3">
+<div fxLayout="column" fxLayoutAlign="center center" class="p-3 h-100">
   <button mat-raised-button
     [color]="isActive ? 'primary' : 'accent'"
     (mousedown)="pressButton(true)"
-    (mouseup)="pressButton(false)">
+    (mouseup)="pressButton(false)"
+    (mouseleave)="pressButton(false)"
+    (touchstart)="pressButton(true)"
+    (touchend)="pressButton(false)"
+    class="btn">
     Press me
   </button>
 
-  {{ value }}
+  <span class="mat-h1 mt-5">{{ value }}%</span>
 </div>

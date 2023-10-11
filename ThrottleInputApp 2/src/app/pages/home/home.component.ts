@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Data } from 'src/app/models/data';
+import { QuixService } from 'src/app/services/quix.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -9,7 +11,7 @@ export class HomeComponent implements OnInit {
   interval: NodeJS.Timeout;
   isActive: boolean;
 
-  constructor() { }
+  constructor(private quixService: QuixService) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +23,20 @@ export class HomeComponent implements OnInit {
 
     this.interval = setInterval(() => {
 			this.value += isActive ? 1 : -1;
+      this.sendData(this.value);
       if (this.value >= 100 || this.value <= 0) clearInterval(this.interval);
-		}, 100);
+		}, 10);
+  }
+
+  sendData(value: number): void {
+    const payload: Data = {
+      timestamps: [new Date().getTime() * 1000000],
+      numericValues: {
+        "speed": [value],
+      }
+    };
+    const topicId = this.quixService.workspaceId + '-' + this.quixService.topicName;
+    this.quixService.sendParameterData(topicId, 'test-bench', payload);
   }
 
 }

@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QRCodeModule } from 'angularx-qrcode';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { QRCodeModule } from 'angularx-qrcode';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
     QRCodeModule

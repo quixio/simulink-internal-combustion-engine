@@ -9,7 +9,7 @@ deployments:
   - name: ThrottleInputApp 2
     application: ThrottleInputApp 2
     deploymentType: Service
-    version: 6c1d2962c74a0262e5794dc99032458b0a10e81d
+    version: f28d8ab2cb4edc74f25d92ba1f0fe0d854e3a72a
     resources:
       cpu: 200
       memory: 500
@@ -18,7 +18,12 @@ deployments:
       enabled: true
       urlPrefix: throttleinputapp2-78e415
     desiredStatus: Running
-    variables: []
+    variables:
+      - name: throttle
+        inputType: OutputTopic
+        description: ''
+        required: false
+        value: throttle-input
 
 # This section describes the Topics of the data pipeline
 topics:

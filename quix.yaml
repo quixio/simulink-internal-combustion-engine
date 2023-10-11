@@ -9,7 +9,7 @@ deployments:
   - name: ThrottleInputApp 2
     application: ThrottleInputApp 2
     deploymentType: Service
-    version: f28d8ab2cb4edc74f25d92ba1f0fe0d854e3a72a
+    version: a1300bbff8cd200033bcac366ca1afec14a169dd
     resources:
       cpu: 200
       memory: 500
@@ -24,6 +24,11 @@ deployments:
         description: ''
         required: false
         value: throttle-input
+      - name: bearer_token
+        inputType: Secret
+        description: ''
+        required: true
+        value: bearer_token
 
 # This section describes the Topics of the data pipeline
 topics:

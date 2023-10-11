@@ -8,4 +8,11 @@ metadata:
 deployments: []
 
 # This section describes the Topics of the data pipeline
-topics: []
+topics:
+  - name: hello-world-source
+    persisted: false
+    configuration:
+      partitions: 2
+      replicationFactor: 2
+      retentionInMinutes: -1
+      retentionInBytes: 1048576000

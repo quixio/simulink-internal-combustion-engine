@@ -5,7 +5,17 @@ metadata:
   version: 1.0
 
 # This section describes the Deployments of the data pipeline
-deployments: []
+deployments:
+  - name: ThrottleInputApp 2
+    application: ThrottleInputApp 2
+    deploymentType: Service
+    version: d3732732f70e499ffe57e28a9b96a97ec469a856
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Running
+    variables: []
 
 # This section describes the Topics of the data pipeline
 topics:

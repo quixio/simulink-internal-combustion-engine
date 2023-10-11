@@ -28,6 +28,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles/bootstrap/bootstrap.scss",
+              "src/styles/material/material.scss",
               "src/styles.scss"
             ],
             "scripts": []

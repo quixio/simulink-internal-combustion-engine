@@ -1,11 +1,15 @@
-name: ThrottleInputApp
-language: python
+name: ThrottleInputApp 2
+language: nodejs
 variables:
-  - name: output
-    inputType: OutputTopic
-    description: This is the output topic for hello world data
-    defaultValue: hello-world-source
+  - name: topic
+    inputType: FreeText
+    description: The topic to read telementry data from
+    defaultValue: phone-data
     required: true
-dockerfile: build/dockerfile
-runEntryPoint: main.py
-defaultFile: main.py
+  - name: eventTopic
+    inputType: FreeText
+    description: The topic to read events from
+    defaultValue: events
+    required: true
+dockerfile: src/build/dockerfile
+defaultFile: src/app/services/environment-variables.service.ts

@@ -1,4 +1,10 @@
 name: ThrottleInputApp 2
 language: nodejs
+variables:
+  - name: throttle
+    inputType: OutputTopic
+    description: ''
+    defaultValue: throttle-input
+    required: false
 dockerfile: src/build/dockerfile
 defaultFile: src/app/services/quix.service.ts

@@ -9,7 +9,7 @@ deployments:
   - name: ThrottleInputApp 2
     application: ThrottleInputApp 2
     deploymentType: Service
-    version: 4b8f58fd436ba6cd0bdc09e79105aa165370b8f9
+    version: 8a199c2e1f2553cc3c74d4579aaad59511ce10ab
     resources:
       cpu: 200
       memory: 500

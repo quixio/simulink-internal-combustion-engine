@@ -1,34 +1,30 @@
 import quixstreams as qx
-import time
-import datetime
-import math
 import os
+import quixmatlab
+import matlab
 
+qxmlm = quixmatlab.initialize()
 
-# Quix injects credentials automatically to the client. 
-# Alternatively, you can always pass an SDK token manually as an argument.
 client = qx.QuixStreamingClient()
+input_topic = client.get_topic_consumer(os.environ["input"])
+output_topic = client.get_topic_producer(os.environ["output"])
 
-# Open the output topic where to write data out
-topic_producer = client.get_topic_producer(topic_id_or_name = os.environ["output"])
+def on_data_received_handler(input_stream: qx.StreamConsumer, data: qx.TimeseriesData):
+    with data:
+        for ts in data.timestamps:    
+            throttle_angles = matlab.double([ts.parameters["throttle_angle"].numeric_value])
+            timestamps = matlab.double([ts.timestamp_milliseconds / 1000])
+            rv = qxmlm.engine(throttle_angles, timestamps)
+            ts.add_value("engine_speed", rv)
+            print("throttle angle:{}, engine speed:{}".format(throttle_angles[0][0], rv))
+        output_stream = output_topic.get_or_create_stream(input_stream.stream_id)
+        output_stream.timeseries.publish(data)
 
-# Set stream ID or leave parameters empty to get stream ID generated.
-stream = topic_producer.create_stream()
-stream.properties.name = "Hello World Python stream"
+def on_stream_received_handler(stream: qx.StreamConsumer):
+    print("New stream: {}".format(stream.stream_id))
+    stream.timeseries.on_data_received = on_data_received_handler
 
-# Add metadata about time series data you are about to send. 
-stream.timeseries.add_definition("ParameterA").set_range(-1.2, 1.2)
-stream.timeseries.buffer.time_span_in_milliseconds = 100
+input_topic.on_stream_received = on_stream_received_handler
 
-print("Sending values for 30 seconds.")
-
-for index in range(0, 3000):
-    stream.timeseries \
-        .buffer \
-        .add_timestamp(datetime.datetime.utcnow()) \
-        .add_value("ParameterA", math.sin(index / 200.0) + math.sin(index) / 5.0) \
-        .publish()
-    time.sleep(0.01)
-
-print("Closing stream")
-stream.close()
+print("Listening to streams. Press CTRL-C to exit.")
+qx.App.run()

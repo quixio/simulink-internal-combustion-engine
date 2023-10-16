@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     const payload: Data = {
       timestamps: [new Date().getTime() * 1000000],
       numericValues: {
-        "speed": [value],
+        "throttle_angle": [value],
       }
     };
     const topicId = this.quixService.workspaceId + '-' + this.quixService.topicName;

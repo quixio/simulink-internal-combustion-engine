@@ -5,7 +5,27 @@ metadata:
   version: 1.0
 
 # This section describes the Deployments of the data pipeline
-deployments: []
+deployments:
+  - name: ICE Model
+    application: ice-model
+    deploymentType: Service
+    version: 00dd16fb1b048b18cc34c9ad94819c3c3bdf2090
+    resources:
+      cpu: 2000
+      memory: 2000
+      replicas: 1
+    desiredStatus: Running
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: This is the output topic for hello world data
+        required: true
+        value: ice-output
+      - name: input
+        inputType: InputTopic
+        description: ''
+        required: true
+        value: ice-input
 
 # This section describes the Topics of the data pipeline
 topics:

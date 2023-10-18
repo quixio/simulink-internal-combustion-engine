@@ -13,7 +13,8 @@ def on_data_received_handler(input_stream: qx.StreamConsumer, data: qx.Timeserie
     with data:
         for ts in data.timestamps:    
             throttle_angles = matlab.double([ts.parameters["throttle_angle"].numeric_value])
-            timestamps = matlab.double([ts.timestamp_milliseconds / 1000])
+            # we don't care about the absolute timestamp, we run simulation for 0.1s.
+            timestamps = matlab.double([0.0])
             rv = qxmlm.engine(throttle_angles, timestamps)
             ts.add_value("engine_speed", rv)
             print("throttle angle:{}, engine speed:{}".format(throttle_angles[0][0], rv))

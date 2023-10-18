@@ -3,7 +3,7 @@
     [color]="isActive ? 'primary' : 'accent'"
     (mousedown)="pressButton(true)"
     (mouseup)="pressButton(false)"
-    (mouseleave)="pressButton(false)"
+    (mouseleave)="isActive && pressButton(false)"
     (touchstart)="pressButton(true)"
     (touchend)="pressButton(false)"
     class="btn">

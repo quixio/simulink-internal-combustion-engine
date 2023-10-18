@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit {
     if (!this.value && !isActive) return; // Avoid negative values
 
     this.interval = setInterval(() => {
-			this.value += isActive ? 1 : -1;
+      if (isActive && this.value < 100) this.value += 1
+      else if (!isActive && this.value > 0) this.value -= 1
       this.sendData(this.value);
-      if (this.value >= 100 || this.value <= 0) clearInterval(this.interval);
 		}, 10);
   }
 

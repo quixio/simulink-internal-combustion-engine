@@ -6,7 +6,7 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: ThrottleInputApp 2
+  - name: ThrottleInputApp
     application: ThrottleInputApp 2
     deploymentType: Service
     version: ab20c7095aba1eb990cce95f3211670e7d3569c2

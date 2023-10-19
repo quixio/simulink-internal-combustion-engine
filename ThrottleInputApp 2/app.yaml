@@ -1,7 +1,7 @@
-name: ThrottleInputApp 2
+name: ThrottleInputApp
 language: nodejs
 variables:
-  - name: throttle
+  - name: output_topic
     inputType: OutputTopic
     description: ''
     defaultValue: throttle-input

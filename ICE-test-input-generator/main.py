@@ -22,6 +22,6 @@ for i in range(30):
         .add_value("throttle_angle", i)
     stream.timeseries.publish(data)
     print("send angle: {}".format(i))
-    time.sleep(1)
+    time.sleep(2)
 
 print("Done")

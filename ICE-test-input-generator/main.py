@@ -21,6 +21,6 @@ for i in range(30):
     data.add_timestamp(datetime.datetime.utcnow()) \
         .add_value("throttle_angle", i)
     stream.timeseries.publish(data)
-    time.sleep(1)
+    time.sleep(0.1)
 
 print("Done")

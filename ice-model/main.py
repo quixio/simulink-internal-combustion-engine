@@ -2,6 +2,7 @@ import quixstreams as qx
 import os
 import quixmatlab
 import matlab
+import time
 
 qxmlm = quixmatlab.initialize()
 
@@ -15,7 +16,10 @@ def on_data_received_handler(input_stream: qx.StreamConsumer, data: qx.Timeserie
             throttle_angles = matlab.double([ts.parameters["throttle_angle"].numeric_value])
             # we don't care about the absolute timestamp, we run simulation for 0.1s.
             timestamps = matlab.double([0.0])
+            t0 = time.time()
             rv = qxmlm.engine(throttle_angles, timestamps)
+            t1 = time.time()
+            print("time taken = {} seoconds".format(t1 - t0))
             ts.add_value("engine_speed", rv)
             print("throttle angle:{}, engine speed:{}".format(throttle_angles[0][0], rv))
         output_stream = output_topic.get_or_create_stream(input_stream.stream_id)

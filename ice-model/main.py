@@ -19,7 +19,7 @@ def on_data_received_handler(input_stream: qx.StreamConsumer, data: qx.Timeserie
             t0 = time.time()
             rv = qxmlm.engine(throttle_angles, timestamps)
             t1 = time.time()
-            print("time taken = {} seoconds".format(t1 - t0))
+            print("time taken = {} seconds".format(t1 - t0))
             ts.add_value("engine_speed", rv)
             print("throttle angle:{}, engine speed:{}".format(throttle_angles[0][0], rv))
         output_stream = output_topic.get_or_create_stream(input_stream.stream_id)

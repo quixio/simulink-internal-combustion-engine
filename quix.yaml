@@ -29,7 +29,7 @@ deployments:
   - name: ICE Test Input Generator
     application: ICE-test-input-generator
     deploymentType: Job
-    version: a80eeafdecb1fd0bf912050e4068278e84c8dc48
+    version: d26e422e572f2867003d7ac477cef391740e9196
     resources:
       cpu: 200
       memory: 500

@@ -9,7 +9,7 @@ deployments:
   - name: ICE Model
     application: ice-model
     deploymentType: Service
-    version: e4709aa2c31c3e1f702b06f35170e354ecd2270f
+    version: a1cb511801a526cfaf0c956399c9624b25aeb8f0
     resources:
       cpu: 4000
       memory: 2000

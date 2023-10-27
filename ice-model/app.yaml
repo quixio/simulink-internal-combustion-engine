@@ -11,6 +11,11 @@ variables:
     description: ''
     defaultValue: ice-input
     required: true
+  - name: buffer_ms
+    inputType: FreeText
+    description: ''
+    defaultValue: 100
+    required: true
 dockerfile: build/dockerfile
 runEntryPoint: main.py
 defaultFile: main.py

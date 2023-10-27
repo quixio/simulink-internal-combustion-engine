@@ -4,6 +4,7 @@ import quixmatlab
 import matlab
 import time
 import uuid
+from queue import Queue
 
 qxmlm = quixmatlab.initialize()
 
@@ -18,9 +19,13 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
     with data:
         t = []
         theta = []
+        kv = []
         for ts in data.timestamps:    
-            t.append(ts.timestamp_milliseconds)
-            theta.append(ts.parameters["throttle_angle"].numeric_value)
+            k = ts.timestamp_nanoseconds
+            v = ts.parameters["throttle_angle"].numeric_value
+            t.append(ts.timestamp_milliseconds / 1000.0)
+            theta.append(v)
+            kv.append((k, v))
             
         throttle_profile = matlab.double(theta)
         timeseries = matlab.double(t)
@@ -29,13 +34,22 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
             rv = qxmlm.engine(throttle_profile, timeseries)
             t1 = time.time()
             print("time taken = {} seconds".format(t1 - t0))
-        
+
+            i = 0
+            data_out = qx.TimeseriesData()
+            
             for ts in rv:
-                nanos = int(ts[0] * 1000000)
-                print("time={}, speed={}".format(nanos, ts[1]))
-                data.add_timestamp_nanoseconds(nanos) \
+                nanos = int(ts[0] * 1000000000)
+                while i < len(kv) and kv[i][0] < nanos:
+                    data_out.add_timestamp_nanoseconds(kv[i][0]) \
+                            .add_value("throttle_angle", kv[i][1])
+                    output_stream.timeseries.buffer.publish(data_out)
+                    print("time={}, theta={}".format(kv[i][0], kv[i][1]))
+                    i += 1
+                data_out.add_timestamp_nanoseconds(nanos) \
                     .add_value("v_engine", float(ts[1]))
-                output_stream.timeseries.buffer.publish(data)
+                output_stream.timeseries.buffer.publish(data_out)
+                print("time={}, speed={}".format(nanos, ts[1]))
         except Exception as e:
             print(e)
 

@@ -9,7 +9,7 @@ topic_producer = client.get_topic_producer(topic_id_or_name = os.environ["output
 stream = topic_producer.create_stream() 
 
 while True:
-    throttle_angle = random.uniform(0, 180)
+    throttle_angle = random.uniform(0, 90)
     data = qx.TimeseriesData()
     data.add_timestamp(datetime.datetime.utcnow()) \
         .add_value("throttle_angle", throttle_angle)

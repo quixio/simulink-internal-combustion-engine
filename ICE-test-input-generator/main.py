@@ -18,7 +18,7 @@ while True:
         .add_value("throttle_angle", throttle_angle)
     stream.timeseries.publish(data)
     i = (i + 1) % 180
-    time.sleep(0.1)
+    time.sleep(0.5)
 
 #for i in range(30):
 #    data = qx.TimeseriesData()

@@ -26,6 +26,11 @@ deployments:
         description: ''
         required: true
         value: ice-input
+      - name: buffer_ms
+        inputType: FreeText
+        description: ''
+        required: true
+        value: 100
   - name: ICE Test Input Generator
     application: ICE-test-input-generator
     deploymentType: Job

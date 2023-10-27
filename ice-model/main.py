@@ -13,7 +13,7 @@ client = qx.QuixStreamingClient()
 input_topic = client.get_topic_consumer(os.environ["input"])
 output_topic = client.get_topic_producer(os.environ["output"])
 output_stream = output_topic.get_or_create_stream(stream_id)
-output_stream.timeseries.buffer.packet_size = 200
+output_stream.timeseries.buffer.time_span_in_milliseconds = int(os.environ["buffer_ms"])
 
 def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
     with data:
@@ -43,12 +43,12 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
                 while i < len(kv) and kv[i][0] < nanos:
                     data_out.add_timestamp_nanoseconds(kv[i][0]) \
                             .add_value("throttle_angle", kv[i][1])
-                    output_stream.timeseries.buffer.publish(data_out)
+                    #output_stream.timeseries.buffer.publish(data_out)
                     print("time={}, theta={}".format(kv[i][0], kv[i][1]))
                     i += 1
                 data_out.add_timestamp_nanoseconds(nanos) \
                     .add_value("v_engine", float(ts[1]))
-                output_stream.timeseries.buffer.publish(data_out)
+                #output_stream.timeseries.buffer.publish(data_out)
                 print("time={}, speed={}".format(nanos, ts[1]))
         except Exception as e:
             print(e)

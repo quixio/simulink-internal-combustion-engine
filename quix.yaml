@@ -26,6 +26,20 @@ deployments:
         description: ''
         required: true
         value: ice-input
+  - name: ICE Test Input Generator
+    application: ICE-test-input-generator
+    deploymentType: Job
+    version: a80eeafdecb1fd0bf912050e4068278e84c8dc48
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: This is the output topic for hello world data
+        required: true
+        value: ice-input
 
 # This section describes the Topics of the data pipeline
 topics:

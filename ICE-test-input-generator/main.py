@@ -8,12 +8,16 @@ client = qx.QuixStreamingClient()
 topic_producer = client.get_topic_producer(topic_id_or_name = os.environ["output"])
 stream = topic_producer.create_stream() 
 
+i = 0
+
 while True:
-    throttle_angle = random.uniform(0, 90)
+    #throttle_angle = random.uniform(0, 90)
+    throttle_angle = i
     data = qx.TimeseriesData()
     data.add_timestamp(datetime.datetime.utcnow()) \
         .add_value("throttle_angle", throttle_angle)
     stream.timeseries.publish(data)
+    i = (i + 1) % 180
     time.sleep(0.1)
 
 #for i in range(30):

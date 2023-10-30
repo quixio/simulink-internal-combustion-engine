@@ -1,11 +1,15 @@
 name: ThrottleInputApp
-language: python
+language: nodejs
 variables:
-  - name: output
+  - name: output_topic
     inputType: OutputTopic
-    description: This is the output topic for hello world data
-    defaultValue: hello-world-source
+    description: ''
+    defaultValue: throttle-input
+    required: false
+  - name: bearer_token
+    inputType: Secret
+    description: ''
+    defaultValue: bearer_token
     required: true
-dockerfile: build/dockerfile
-runEntryPoint: main.py
-defaultFile: main.py
+dockerfile: src/build/dockerfile
+defaultFile: src/app/services/quix.service.ts

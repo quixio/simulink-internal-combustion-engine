@@ -5,7 +5,37 @@ metadata:
   version: 1.0
 
 # This section describes the Deployments of the data pipeline
-deployments: []
+deployments:
+  - name: ThrottleInputApp
+    application: ThrottleInputApp
+    deploymentType: Service
+    version: f35f16aba953fd866cc38d3c9965e9d57b105f22
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    publicAccess:
+      enabled: true
+      urlPrefix: throttleinputapp2-78e415
+    desiredStatus: Running
+    variables:
+      - name: output_topic
+        inputType: OutputTopic
+        description: ''
+        required: false
+        value: throttle-input
+      - name: bearer_token
+        inputType: Secret
+        description: ''
+        required: true
+        secretKey: bearer_token
 
 # This section describes the Topics of the data pipeline
-topics: []
+topics:
+  - name: throttle-input
+    persisted: false
+    configuration:
+      partitions: 2
+      replicationFactor: 2
+      retentionInMinutes: 60
+      retentionInBytes: 52428800

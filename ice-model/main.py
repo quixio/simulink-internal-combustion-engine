@@ -4,7 +4,6 @@ import quixmatlab
 import matlab
 import time
 import uuid
-from queue import Queue
 
 qxmlm = quixmatlab.initialize()
 

@@ -30,7 +30,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: 100
+        value: 5000
   - name: ICE Test Input Generator
     application: ICE-test-input-generator
     deploymentType: Job

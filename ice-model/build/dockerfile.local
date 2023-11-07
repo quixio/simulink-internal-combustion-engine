@@ -1,0 +1,14 @@
+FROM quixanalytics/matlab-simulink:r2023b-python310
+
+# Application
+COPY requirements.txt requirements.txt
+RUN python3 -m pip install -r requirements.txt
+COPY MATLAB/ .
+RUN python3 setup.py install
+COPY . .
+ENV Quix__Sdk__Token="sdk-6040203e2a4f4885ab44e09f51c0d434"
+ENV input="ice-input"
+ENV output="ice-output"
+ENV buffer_ms="5000"
+ENTRYPOINT [ "python3", "main.py" ]
+

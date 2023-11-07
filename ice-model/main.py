@@ -37,7 +37,6 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
 
             i = 0
             data_out = qx.TimeseriesData()
-            
             for ts in rv:
                 nanos = int(ts[0] * 1000000000)
                 while i < len(kv) and kv[i][0] < nanos:
@@ -46,10 +45,14 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
                     output_stream.timeseries.buffer.publish(data_out)
                     print("time={}, theta={}".format(kv[i][0], kv[i][1]))
                     i += 1
-                data_out.add_timestamp_nanoseconds(nanos) \
-                    .add_value("v_engine", float(ts[1]))
-                output_stream.timeseries.buffer.publish(data_out)
+
+                output_stream.timeseries.buffer.flush()
+                output_stream.timeseries.buffer \
+                    .add_timestamp_nanoseconds(nanos) \
+                    .add_value("v_engine", float(ts[1])) \
+                    .publish()
                 print("time={}, speed={}".format(nanos, ts[1]))
+            output_stream.timeseries.buffer.flush()
         except Exception as e:
             print(e)
 

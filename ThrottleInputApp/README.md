@@ -1,25 +1,27 @@
-# Starter transformation
+# ThrottleInputApp
 
-[This project](https://github.com/quixio/quix-samples/tree/main/python/sources/Empty-Template) is an example of how to connect and start a new stream with some values.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
-## How to run
+## Development server
 
-Create a [Quix](https://portal.platform.quix.ai/self-sign-up?xlink=github) account or log-in and visit the Samples to use this project.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Clicking `Edit code` on the Sample, forks the project to your own Git repo so you can customize it before deploying.
+## Code scaffolding
 
-## Environment variables
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-The code sample uses the following environment variables:
+## Build
 
-- **output**: This is the output topic for hello world data.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Contribute
+## Running unit tests
 
-Submit forked projects to the Quix [GitHub](https://github.com/quixio/quix-samples) repo. Any new project that we accept will be attributed to you and you'll receive $200 in Quix credit.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Open source
+## Running end-to-end tests
 
-This project is open source under the Apache 2.0 license and available in our [GitHub](https://github.com/quixio/quix-samples) repo.
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-Please star us and mention us on social to show your appreciation.
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

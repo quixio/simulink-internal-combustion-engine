@@ -23,7 +23,7 @@ deployments:
         inputType: OutputTopic
         description: ''
         required: false
-        value: throttle-input
+        value: ice-input
       - name: bearer_token
         inputType: Secret
         description: ''

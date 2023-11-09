@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.interval = setInterval(() => {
       if (isActive && this.value < 100) this.value += 5
       else if (!isActive && this.value > 0) this.value -= 5
-      this.sendData(this.value);
+      this.sendData(Math.round(this.value));
 		}, 50);
   }
 

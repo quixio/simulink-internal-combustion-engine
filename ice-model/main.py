@@ -12,7 +12,7 @@ client = qx.QuixStreamingClient()
 input_topic = client.get_topic_consumer(os.environ["input"])
 output_topic = client.get_topic_producer(os.environ["output"])
 output_stream = output_topic.get_or_create_stream(stream_id)
-output_stream.timeseries.buffer.time_span_in_milliseconds = int(os.environ["buffer_ms"])
+#output_stream.timeseries.buffer.time_span_in_milliseconds = int(os.environ["buffer_ms"])
 
 def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
     with data:
@@ -58,7 +58,7 @@ def on_data_recv_handler(sc: qx.StreamConsumer, data: qx.TimeseriesData):
 def on_stream_recv_handler(stream: qx.StreamConsumer):
     print("New stream: {}".format(stream.stream_id))
     buf = stream.timeseries.create_buffer()
-    buf.time_span_in_milliseconds = 5000
+    buf.time_span_in_milliseconds = int(os.environ["buffer_ms"])
     buf.on_data_released = on_data_recv_handler
 
 input_topic.on_stream_received = on_stream_recv_handler

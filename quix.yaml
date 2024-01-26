@@ -17,7 +17,7 @@ deployments:
     publicAccess:
       enabled: true
       urlPrefix: throttleinputapp2-78e415
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: output_topic
         inputType: OutputTopic
